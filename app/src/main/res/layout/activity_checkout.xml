@@ -9,18 +9,44 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <!-- Heading -->
-        <TextView
-            android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="25dp">
+
+        <!-- Back Button & Checkout Title in One Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Checkout"
-            android:layout_marginTop="25dp"
-            android:textSize="38sp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:layout_gravity="center"
-            android:paddingBottom="16dp"/>
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingBottom="16dp">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/back"
+                app:tint="@android:color/white"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Checkout"
+                android:textColor="@color/white"
+                android:textSize="34sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+        </LinearLayout>
 
         <!-- Name Field -->
         <EditText
@@ -30,6 +56,8 @@
             android:hint="Full Name"
             android:padding="12dp"
             android:layout_marginTop="16dp"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
             android:background="@drawable/edittext_bg"
             android:inputType="textPersonName"/>
 
@@ -41,6 +69,8 @@
             android:hint="Email"
             android:padding="12dp"
             android:layout_marginTop="16dp"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
             android:background="@drawable/edittext_bg"
             android:inputType="textEmailAddress" />
 
@@ -51,6 +81,8 @@
             android:layout_height="wrap_content"
             android:hint="Phone Number"
             android:padding="12dp"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
             android:background="@drawable/edittext_bg"
             android:inputType="phone"
             android:layout_marginTop="16dp"/>
@@ -62,9 +94,24 @@
             android:layout_height="wrap_content"
             android:hint="Delivery Address"
             android:padding="12dp"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
             android:background="@drawable/edittext_bg"
             android:inputType="textPostalAddress"
             android:layout_marginTop="16dp"/>
+
+        <!-- Total Amount -->
+        <TextView
+            android:id="@+id/tvTotalAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total: ₹0"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="30dp"
+            android:paddingBottom="10dp"/>
 
         <!-- Payment Button -->
         <androidx.appcompat.widget.AppCompatButton

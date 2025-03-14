@@ -15,8 +15,7 @@ class AddToCartActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddToCartBinding
     private lateinit var recyclerView: RecyclerView
     private lateinit var cartAdapter: CartAdapter
-
-
+    private var cartItems: MutableList<ItemsModel> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,19 +29,27 @@ class AddToCartActivity : AppCompatActivity() {
 
         // Proceed to Checkout
         binding.btnCheckout.setOnClickListener {
+            val total = cartItems.sumOf { it.price * it.quantity } // Correct total calculation
+
             val intent = Intent(this, CheckoutActivity::class.java)
+            intent.putExtra("TOTAL_AMOUNT", total)  // ✅ Pass the total amount
             startActivity(intent)
         }
-        binding.btnBack.setOnClickListener { finish() }
 
-
-        recyclerView = findViewById(R.id.recyclerCartItems)  // Corrected ID
+        recyclerView = binding.recyclerCartItems
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        cartAdapter = CartAdapter(CartManager.getCartItems() as MutableList<ItemsModel>)
+        cartItems = CartManager.getCartItems() as MutableList<ItemsModel>
+        cartAdapter = CartAdapter(cartItems) { updateTotalPrice() }
         recyclerView.adapter = cartAdapter
-        cartAdapter.notifyDataSetChanged()
 
+        // Initialize total price
+        updateTotalPrice()
     }
 
+    // Function to update the total price dynamically
+    private fun updateTotalPrice() {
+        val total = cartItems.sumOf { it.price * it.quantity }  // Assuming price & quantity exist
+        binding.tvTotalPrice.text = "Total: $$total"
+    }
 }

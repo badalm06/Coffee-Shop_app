@@ -47,9 +47,25 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.firebase.database)
+    implementation(libs.firebase.auth)
+    implementation(libs.androidx.credentials)
+    implementation(libs.androidx.credentials.play.services.auth)
+    implementation(libs.googleid)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
     implementation ("com.github.Dimezis:BlurView:version-1.6.6")
     implementation ("com.github.bumptech.glide:glide:4.12.0")
+    implementation ("com.razorpay:checkout:1.6.26")  // Latest SDK version
+    implementation ("com.google.code.gson:gson:2.8.9")
+
+    implementation ("com.google.android.gms:play-services-auth:20.2.0")
+
+    // For Google Authentication
+    implementation("com.google.android.libraries.identity.googleid:googleid:1.0.0")
+
+
+
+
 }

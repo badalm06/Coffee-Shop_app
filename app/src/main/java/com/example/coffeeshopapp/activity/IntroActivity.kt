@@ -12,7 +12,7 @@ class IntroActivity : BaseActivity() {
         setContentView(R.layout.activity_intro)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, loginInActivity::class.java)
             startActivity(intent)
             finish()
         },2000)

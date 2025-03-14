@@ -8,8 +8,10 @@ import com.example.coffeeshopapp.utils.CartManager
 import com.example.coffeeshopapp.databinding.ItemCartBinding
 import com.example.coffeeshopapp.model.ItemsModel
 
-class CartAdapter(private val cartItems: MutableList<ItemsModel>) :
-    RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
+class CartAdapter(
+    private val cartItems: MutableList<ItemsModel>,
+    private val onCartUpdated: () -> Unit // Callback to update total price
+) : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
 
     inner class CartViewHolder(private val binding: ItemCartBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -29,9 +31,11 @@ class CartAdapter(private val cartItems: MutableList<ItemsModel>) :
             // Increase quantity
             binding.btnIncrease.setOnClickListener {
                 item.quantity++
-                `CartManager`.updateQuantity(item.id, item.quantity)
+                CartManager.updateQuantity(item.id, item.quantity)
                 binding.quantityText.text = item.quantity.toString()
-                notifyDataSetChanged() // Update RecyclerView
+                binding.priceText.text = "$${item.price * item.quantity} (${item.size})" // Update price
+                notifyDataSetChanged()
+                onCartUpdated() // Trigger total price update
             }
 
             // Decrease quantity
@@ -40,6 +44,8 @@ class CartAdapter(private val cartItems: MutableList<ItemsModel>) :
                     item.quantity--
                     CartManager.updateQuantity(item.id, item.quantity)
                     binding.quantityText.text = item.quantity.toString()
+                    binding.priceText.text = "$${item.price * item.quantity} (${item.size})" // Update price
+                    notifyDataSetChanged()
                 } else {
                     CartManager.removeItem(item.id)
 
@@ -49,7 +55,8 @@ class CartAdapter(private val cartItems: MutableList<ItemsModel>) :
                     // Notify RecyclerView about item removal
                     notifyItemRemoved(adapterPosition)
                 }
-                notifyDataSetChanged() // Refresh the RecyclerView
+                notifyDataSetChanged()
+                onCartUpdated() // Trigger total price update
             }
         }
     }
