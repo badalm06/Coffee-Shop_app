@@ -30,15 +30,17 @@ class ProfileActivity : AppCompatActivity() {
         userName.text = "John Doe"
         userEmail.text = "johndoe@email.com"
 
-        binding.logoutButton.setOnClickListener{
+        binding.logoutButton.setOnClickListener {
             Firebase.auth.signOut()
-//            val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build()
-//            getClient(this,gso).signOut()
 
             val intent = Intent(this, loginInActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK  // Clear all previous activities
             startActivity(intent)
+
             Toast.makeText(this, "Logout Successfully", Toast.LENGTH_SHORT).show()
+            finish()  // Ensure ProfileActivity is finished
         }
+
 
 
     }
