@@ -1,12 +1,11 @@
 package com.example.coffeeshopapp.activity
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.coffeeshopapp.R
 import com.example.coffeeshopapp.databinding.ActivityOrderConfirmBinding
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+
 
 class OrderConfirmActivity : AppCompatActivity() {
 
@@ -17,6 +16,7 @@ class OrderConfirmActivity : AppCompatActivity() {
         binding = ActivityOrderConfirmBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         // ✅ Get order details from intent
         val orderId = intent.getStringExtra("ORDER_ID") ?: "N/A"
         val totalAmount = intent.getDoubleExtra("TOTAL_AMOUNT", 0.0)
@@ -26,7 +26,6 @@ class OrderConfirmActivity : AppCompatActivity() {
         binding.tvOrderId.text = "Order ID: $orderId"
         binding.tvOrderAmount.text = "Total: $$totalAmount"
         binding.tvUserName.text = "Thank you, $userName!"
-
 
         // ✅ Back to home button
         binding.btnBackToHome.setOnClickListener {
