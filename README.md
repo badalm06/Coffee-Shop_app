@@ -92,7 +92,7 @@ Welcome to **Coffee Shop**, a beautifully crafted Android app where users can br
 
 For any queries or feedback, feel free to connect:
 
-📧 Email: [badalsh908@email.com](mailto:badalsh908@email.com)  
+📧 Email: [badalsh908@email.com](mailto:badalsh908@gmail.com)  
 🐙 GitHub: [github.com/badalm06](https://github.com/badalm06)
 
 ---
