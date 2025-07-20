@@ -7,7 +7,6 @@ Welcome to **Coffee Shop**, a beautifully crafted Android app where users can br
 ![Jetpack Components](https://img.shields.io/badge/Jetpack-Components-blue?style=for-the-badge&logo=android)
 ![Firebase](https://img.shields.io/badge/Firebase-Authentication-yellow?style=for-the-badge&logo=firebase)
 ![Platform](https://img.shields.io/badge/Platform-Android-green?style=for-the-badge&logo=android)
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)
 
 
 
